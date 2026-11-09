@@ -1,0 +1,32 @@
+name: posterapp
+description: "Personalized festival & birthday wish posters, shared to WhatsApp Status."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.7
+
+# Pub workspace: one lockfile, one `flutter pub get` for app + packages.
+workspace:
+  - packages/poster_spec
+  - packages/poster_renderer
+  - packages/wa_share
+
+dependencies:
+  flutter:
+    sdk: flutter
+  poster_spec:
+    path: packages/poster_spec
+  poster_renderer:
+    path: packages/poster_renderer
+  wa_share:
+    path: packages/wa_share
+  flutter_riverpod: ^3.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

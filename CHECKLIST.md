@@ -5,7 +5,7 @@ Tick an item **as soon as it's done** and close its issue. Items labelled `ui` n
 ## M0 Setup: Toolchain and repo scaffold
 
 - [x] [#1](https://github.com/TheRealRajdeep/poster-app/issues/1) Install Flutter + Android Studio; flutter doctor all green
-- [ ] [#2](https://github.com/TheRealRajdeep/poster-app/issues/2) Scaffold Flutter app + packages/ layout (poster_spec, poster_renderer, wa_share)
+- [x] [#2](https://github.com/TheRealRajdeep/poster-app/issues/2) Scaffold Flutter app + packages/ layout (poster_spec, poster_renderer, wa_share)
 - [ ] [#3](https://github.com/TheRealRajdeep/poster-app/issues/3) CI: GitHub Actions running flutter analyze + tests on every push
 
 ## M1 Thin slice: One bundled spec -> renderer -> WhatsApp Status share on a real low-end phone
@@ -63,6 +63,7 @@ Tick an item **as soon as it's done** and close its issue. Items labelled `ui` n
 - [ ] [#36](https://github.com/TheRealRajdeep/poster-app/issues/36) Privacy policy + Play Data Safety form
 - [ ] [#37](https://github.com/TheRealRajdeep/poster-app/issues/37) Closed beta via Play internal testing
 - [ ] [#38](https://github.com/TheRealRajdeep/poster-app/issues/38) Play Store listing in 7 languages `ui`
+- [ ] [#48](https://github.com/TheRealRajdeep/poster-app/issues/48) Replace placeholder app ID com.example.posterapp before first Play upload
 
 ## M8 Wish someone: Birthdays for others (politicians, community)
 

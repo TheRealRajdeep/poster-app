@@ -1,0 +1,20 @@
+name: poster_renderer
+description: "(spec + scene + profile) -> image. Pure and deterministic; no Firebase, no app UI."
+version: 0.0.1
+publish_to: 'none'
+resolution: workspace
+
+environment:
+  sdk: ^3.13.7
+  flutter: ">=3.38.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  poster_spec:
+    path: ../poster_spec
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
