@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  analyze-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.9
+          cache: true
+
+      - name: Get dependencies (whole workspace)
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test app
+        run: flutter test
+
+      - name: Test poster_spec (pure Dart)
+        working-directory: packages/poster_spec
+        run: dart test
+
+      - name: Test poster_renderer
+        working-directory: packages/poster_renderer
+        run: flutter test
+
+      - name: Test wa_share
+        working-directory: packages/wa_share
+        run: flutter test

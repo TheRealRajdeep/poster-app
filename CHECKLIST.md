@@ -6,7 +6,7 @@ Tick an item **as soon as it's done** and close its issue. Items labelled `ui` n
 
 - [x] [#1](https://github.com/TheRealRajdeep/poster-app/issues/1) Install Flutter + Android Studio; flutter doctor all green
 - [x] [#2](https://github.com/TheRealRajdeep/poster-app/issues/2) Scaffold Flutter app + packages/ layout (poster_spec, poster_renderer, wa_share)
-- [ ] [#3](https://github.com/TheRealRajdeep/poster-app/issues/3) CI: GitHub Actions running flutter analyze + tests on every push
+- [x] [#3](https://github.com/TheRealRajdeep/poster-app/issues/3) CI: GitHub Actions running flutter analyze + tests on every push
 
 ## M1 Thin slice: One bundled spec -> renderer -> WhatsApp Status share on a real low-end phone
 
