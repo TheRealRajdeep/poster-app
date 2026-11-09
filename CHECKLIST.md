@@ -4,7 +4,7 @@ Tick an item **as soon as it's done** and close its issue. Items labelled `ui` n
 
 ## M0 Setup: Toolchain and repo scaffold
 
-- [ ] [#1](https://github.com/TheRealRajdeep/poster-app/issues/1) Install Flutter + Android Studio; flutter doctor all green
+- [x] [#1](https://github.com/TheRealRajdeep/poster-app/issues/1) Install Flutter + Android Studio; flutter doctor all green
 - [ ] [#2](https://github.com/TheRealRajdeep/poster-app/issues/2) Scaffold Flutter app + packages/ layout (poster_spec, poster_renderer, wa_share)
 - [ ] [#3](https://github.com/TheRealRajdeep/poster-app/issues/3) CI: GitHub Actions running flutter analyze + tests on every push
 
