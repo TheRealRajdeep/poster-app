@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:poster_spec/poster_spec.dart';
 
+import 'effects.dart';
 import 'fonts.dart';
 
 /// Everything user-specific the renderer needs. Kept separate from the
@@ -91,9 +92,10 @@ class PosterRenderer {
         case TextSlot():
           final text = inputs.texts[slot.bind]?.trim();
           if (text == null || text.isEmpty) continue;
-          final fitted = _layoutText(slot, text, inputs.language);
-          if (fitted.overflowed) overflows.add(TextOverflow(i, slot.bind));
-          _drawParagraph(canvas, slot, fitted.paragraph);
+          final font = fonts(slot.font, inputs.language);
+          final fit = _fitFontSize(slot, text, font, inputs.language);
+          if (fit.overflowed) overflows.add(TextOverflow(i, slot.bind));
+          await _drawText(canvas, slot, text, font, inputs.language, fit.size, ellipsis: fit.overflowed);
       }
     }
 
@@ -126,51 +128,68 @@ class PosterRenderer {
       PhotoAnchor.bottomRight => (box.right - w, box.bottom - h),
       PhotoAnchor.center => (box.left + (box.width - w) / 2, box.top + (box.height - h) / 2),
     };
-    canvas.drawImageRect(
-      photo,
-      ui.Rect.fromLTWH(0, 0, pw, ph),
-      ui.Rect.fromLTWH(left, top, w, h),
-      paint,
-    );
+    final src = ui.Rect.fromLTWH(0, 0, pw, ph);
+    final dst = ui.Rect.fromLTWH(left, top, w, h);
+    if (slot.shadow) drawPhotoShadow(canvas, photo, src, dst);
+    canvas.drawImageRect(photo, src, dst, paint);
   }
 
   /// Largest font size in [minFontSize, maxFontSize] whose layout fits the
   /// box. Binary search on whole pixels keeps it fast and deterministic.
-  ({ui.Paragraph paragraph, bool overflowed}) _layoutText(
+  /// Paint does not affect layout, so fitting uses plain paragraphs.
+  ({double size, bool overflowed}) _fitFontSize(
     TextSlot slot,
     String text,
+    FontChoice? font,
     String language,
   ) {
-    final font = fonts(slot.font, language);
     var lo = slot.minFontSize.floor();
     var hi = slot.maxFontSize.floor();
-    ui.Paragraph? best;
+    int? best;
     while (lo <= hi) {
       final mid = (lo + hi) ~/ 2;
       final p = _paragraph(slot, text, font, language, mid.toDouble(), ellipsis: false);
-      if (_fits(p, slot)) {
-        best?.dispose();
-        best = p;
+      final fits = !p.didExceedMaxLines && p.height <= slot.box.height && p.longestLine <= slot.box.width;
+      p.dispose();
+      if (fits) {
+        best = mid;
         lo = mid + 1;
       } else {
-        p.dispose();
         hi = mid - 1;
       }
     }
-    if (best != null) return (paragraph: best, overflowed: false);
-    final fallback = _paragraph(
-      slot,
-      text,
-      font,
-      language,
-      slot.minFontSize,
-      ellipsis: true,
-    );
-    return (paragraph: fallback, overflowed: true);
+    return best == null
+        ? (size: slot.minFontSize, overflowed: true)
+        : (size: best.toDouble(), overflowed: false);
   }
 
-  bool _fits(ui.Paragraph p, TextSlot slot) =>
-      !p.didExceedMaxLines && p.height <= slot.box.height && p.longestLine <= slot.box.width;
+  /// Draws text in up to two passes: outline (with the shadow underneath),
+  /// then the fill on top. Both passes share one layout, so they line up.
+  Future<void> _drawText(
+    ui.Canvas canvas,
+    TextSlot slot,
+    String text,
+    FontChoice? font,
+    String language,
+    double size, {
+    required bool ellipsis,
+  }) async {
+    final shadows = slot.shadow == null ? null : [textShadow(slot.shadow!)];
+    final fill = await fillPaint(slot.fill, slot.box);
+    final passes = <ui.Paragraph>[
+      if (slot.stroke != null)
+        _paragraph(slot, text, font, language, size,
+            ellipsis: ellipsis, foreground: strokePaint(slot.stroke!), shadows: shadows),
+      _paragraph(slot, text, font, language, size,
+          ellipsis: ellipsis, foreground: fill, shadows: slot.stroke == null ? shadows : null),
+    ];
+    // Vertically centre the text block inside its box.
+    final dy = slot.box.top + (slot.box.height - passes.last.height) / 2;
+    for (final p in passes) {
+      canvas.drawParagraph(p, ui.Offset(slot.box.left, dy));
+      p.dispose();
+    }
+  }
 
   ui.Paragraph _paragraph(
     TextSlot slot,
@@ -179,6 +198,8 @@ class PosterRenderer {
     String language,
     double size, {
     required bool ellipsis,
+    ui.Paint? foreground,
+    List<ui.Shadow>? shadows,
   }) {
     final builder = ui.ParagraphBuilder(
       ui.ParagraphStyle(
@@ -190,13 +211,12 @@ class PosterRenderer {
         textDirection: ui.TextDirection.ltr,
         maxLines: slot.maxLines,
         ellipsis: ellipsis ? '…' : null,
-        // Spec sizes are design sizes; never let OS font scaling change layout.
-        textHeightBehavior: const ui.TextHeightBehavior(),
       ),
     )
       ..pushStyle(
         ui.TextStyle(
-          color: _fillColor(slot.fill),
+          foreground: foreground,
+          shadows: shadows,
           fontFamily: font?.families.first,
           fontFamilyFallback: font?.families.skip(1).toList(),
           fontSize: size,
@@ -206,20 +226,5 @@ class PosterRenderer {
       )
       ..addText(text);
     return builder.build()..layout(ui.ParagraphConstraints(width: slot.box.width));
-  }
-
-  /// Effects (gradient, presets, stroke, shadow) arrive in #7; until then
-  /// non-solid fills use a representative colour.
-  ui.Color _fillColor(Fill fill) => switch (fill) {
-        SolidFill(:final color) => ui.Color(color),
-        GradientFill(:final colors) => ui.Color(colors.first),
-        PresetFill() => const ui.Color(0xFFFFD36B),
-      };
-
-  void _drawParagraph(ui.Canvas canvas, TextSlot slot, ui.Paragraph p) {
-    // Vertically centre the text block inside its box.
-    final dy = slot.box.top + (slot.box.height - p.height) / 2;
-    canvas.drawParagraph(p, ui.Offset(slot.box.left, dy));
-    p.dispose();
   }
 }
