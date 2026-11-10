@@ -16,7 +16,7 @@ Tick an item **as soon as it's done** and close its issue. Items labelled `ui` n
 - [ ] [#49](https://github.com/TheRealRajdeep/poster-app/issues/49) Choose decorative 'script' and 'ornate' poster fonts per language `ui`
 - [x] [#7](https://github.com/TheRealRajdeep/poster-app/issues/7) Text effects: stroke, gradient/glitter fill, shadow/glow, auto-fit to box
 - [x] [#8](https://github.com/TheRealRajdeep/poster-app/issues/8) Snapshot tests: long names in every script, overflow cases
-- [ ] [#9](https://github.com/TheRealRajdeep/poster-app/issues/9) Hand-made sample scene + spec (1 archetype)
+- [x] [#9](https://github.com/TheRealRajdeep/poster-app/issues/9) Hand-made sample scene + spec (1 archetype)
 - [x] [#10](https://github.com/TheRealRajdeep/poster-app/issues/10) wa_share plugin: share request aimed at com.whatsapp / com.whatsapp.w4b + fallback share menu
 - [ ] [#11](https://github.com/TheRealRajdeep/poster-app/issues/11) Spike: does the caption survive a Status share on current WhatsApp builds?
 - [ ] [#12](https://github.com/TheRealRajdeep/poster-app/issues/12) Debug test screen: render sample + share button `ui`
