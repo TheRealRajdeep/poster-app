@@ -4,4 +4,5 @@
 /// report with a spec id + profile can be replayed exactly in a test.
 library;
 
+export 'src/fonts.dart';
 export 'src/renderer.dart';

@@ -18,3 +18,40 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+
+flutter:
+  # All fonts are SIL OFL 1.1; licence text sits next to each file.
+  fonts:
+    - family: NotoSans
+      fonts:
+        - asset: fonts/NotoSans/NotoSans.ttf
+    - family: NotoSansDevanagari
+      fonts:
+        - asset: fonts/NotoSansDevanagari/NotoSansDevanagari.ttf
+    - family: NotoSansGujarati
+      fonts:
+        - asset: fonts/NotoSansGujarati/NotoSansGujarati.ttf
+    - family: NotoSansKannada
+      fonts:
+        - asset: fonts/NotoSansKannada/NotoSansKannada.ttf
+    - family: NotoSansTelugu
+      fonts:
+        - asset: fonts/NotoSansTelugu/NotoSansTelugu.ttf
+    - family: NotoSansTamil
+      fonts:
+        - asset: fonts/NotoSansTamil/NotoSansTamil.ttf
+    - family: Baloo2
+      fonts:
+        - asset: fonts/Baloo2/Baloo2.ttf
+    - family: BalooBhai2
+      fonts:
+        - asset: fonts/BalooBhai2/BalooBhai2.ttf
+    - family: BalooTamma2
+      fonts:
+        - asset: fonts/BalooTamma2/BalooTamma2.ttf
+    - family: BalooTammudu2
+      fonts:
+        - asset: fonts/BalooTammudu2/BalooTammudu2.ttf
+    - family: BalooThambi2
+      fonts:
+        - asset: fonts/BalooThambi2/BalooThambi2.ttf

@@ -3,11 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:poster_spec/poster_spec.dart';
 
-/// Maps a spec's abstract [FontRole] to a concrete font family for a
-/// language. Returning null uses the platform default font.
-typedef FontResolver = String? Function(FontRole role, String language);
-
-String? _defaultFonts(FontRole role, String language) => null;
+import 'fonts.dart';
 
 /// Everything user-specific the renderer needs. Kept separate from the
 /// spec so one spec renders for every user and language.
@@ -56,7 +52,7 @@ class RenderResult {
 /// Pure, deterministic poster composer: same inputs -> same pixels.
 /// No I/O, no Flutter widgets, no app state.
 class PosterRenderer {
-  const PosterRenderer({this.fonts = _defaultFonts});
+  const PosterRenderer({this.fonts = bundledFontResolver});
 
   final FontResolver fonts;
 
@@ -145,13 +141,13 @@ class PosterRenderer {
     String text,
     String language,
   ) {
-    final family = fonts(slot.font, language);
+    final font = fonts(slot.font, language);
     var lo = slot.minFontSize.floor();
     var hi = slot.maxFontSize.floor();
     ui.Paragraph? best;
     while (lo <= hi) {
       final mid = (lo + hi) ~/ 2;
-      final p = _paragraph(slot, text, family, language, mid.toDouble(), ellipsis: false);
+      final p = _paragraph(slot, text, font, language, mid.toDouble(), ellipsis: false);
       if (_fits(p, slot)) {
         best?.dispose();
         best = p;
@@ -165,7 +161,7 @@ class PosterRenderer {
     final fallback = _paragraph(
       slot,
       text,
-      family,
+      font,
       language,
       slot.minFontSize,
       ellipsis: true,
@@ -179,7 +175,7 @@ class PosterRenderer {
   ui.Paragraph _paragraph(
     TextSlot slot,
     String text,
-    String? family,
+    FontChoice? font,
     String language,
     double size, {
     required bool ellipsis,
@@ -201,8 +197,10 @@ class PosterRenderer {
       ..pushStyle(
         ui.TextStyle(
           color: _fillColor(slot.fill),
-          fontFamily: family,
+          fontFamily: font?.families.first,
+          fontFamilyFallback: font?.families.skip(1).toList(),
           fontSize: size,
+          fontVariations: font == null ? null : [ui.FontVariation('wght', font.weight)],
           locale: ui.Locale(language),
         ),
       )
