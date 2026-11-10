@@ -15,7 +15,7 @@ Tick an item **as soon as it's done** and close its issue. Items labelled `ui` n
 - [x] [#6](https://github.com/TheRealRajdeep/poster-app/issues/6) Indian-script fonts: bundle body + display fonts for hi, mr, gu, kn, te, ta, en
 - [ ] [#49](https://github.com/TheRealRajdeep/poster-app/issues/49) Choose decorative 'script' and 'ornate' poster fonts per language `ui`
 - [x] [#7](https://github.com/TheRealRajdeep/poster-app/issues/7) Text effects: stroke, gradient/glitter fill, shadow/glow, auto-fit to box
-- [ ] [#8](https://github.com/TheRealRajdeep/poster-app/issues/8) Snapshot tests: long names in every script, overflow cases
+- [x] [#8](https://github.com/TheRealRajdeep/poster-app/issues/8) Snapshot tests: long names in every script, overflow cases
 - [ ] [#9](https://github.com/TheRealRajdeep/poster-app/issues/9) Hand-made sample scene + spec (1 archetype)
 - [ ] [#10](https://github.com/TheRealRajdeep/poster-app/issues/10) wa_share plugin: share request aimed at com.whatsapp / com.whatsapp.w4b + fallback share menu
 - [ ] [#11](https://github.com/TheRealRajdeep/poster-app/issues/11) Spike: does the caption survive a Status share on current WhatsApp builds?
@@ -44,6 +44,7 @@ Tick an item **as soon as it's done** and close its issue. Items labelled `ui` n
 - [ ] [#25](https://github.com/TheRealRajdeep/poster-app/issues/25) Factory skeleton (Python) + archetype library format
 - [ ] [#26](https://github.com/TheRealRajdeep/poster-app/issues/26) Scene generation with empty slot areas; pick model + measure cost per image
 - [ ] [#27](https://github.com/TheRealRajdeep/poster-app/issues/27) Automated QA: calm slot areas, contrast colour picking, long-name overflow render
+- [ ] [#50](https://github.com/TheRealRajdeep/poster-app/issues/50) Name slots: 2 lines + minimum readable size; cap name length at input
 - [ ] [#28](https://github.com/TheRealRajdeep/poster-app/issues/28) Publisher: scene.webp to R2, spec to Firestore, 5% human spot-check queue
 - [ ] [#29](https://github.com/TheRealRajdeep/poster-app/issues/29) Scheduled nightly job: next 7 days of occasions
 
