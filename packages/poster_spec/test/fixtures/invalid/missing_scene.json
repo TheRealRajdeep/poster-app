@@ -1,0 +1,2 @@
+{"version":1,"id":"a","occasion":"diwali","archetype":"x","langs":["hi"],"canvas":[1080,1920],
+ "slots":[{"type":"photo","who":"self","box":[0,0,100,100]},{"type":"text","bind":"self.name","box":[0,0,100,100]}]}

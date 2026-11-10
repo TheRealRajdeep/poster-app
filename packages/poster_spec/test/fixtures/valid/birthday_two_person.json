@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "id": "birthday-2026-0001",
+  "occasion": "birthday",
+  "archetype": "two-person-stacked",
+  "langs": ["kn", "en"],
+  "canvas": [1080, 1350],
+  "scene": "scenes/birthday-2026-0001.webp",
+  "slots": [
+    { "type": "photo", "who": "other", "box": [480, 0, 1080, 900], "anchor": "bottom-right" },
+    { "type": "text", "bind": "other.name", "box": [40, 420, 520, 560], "font": "display",
+      "fill": { "gradient": ["#FFD27A", "#F08A00"], "angle": 90 } },
+    { "type": "text", "bind": "other.subtitle", "box": [40, 570, 520, 640] },
+    { "type": "photo", "who": "self", "box": [560, 900, 1000, 1350] },
+    { "type": "text", "bind": "self.name", "box": [40, 1000, 540, 1100], "align": "start" }
+  ]
+}

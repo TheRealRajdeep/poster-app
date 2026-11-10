@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "id": "diwali-2026-0001",
+  "occasion": "diwali",
+  "archetype": "photo-left-text-right",
+  "tones": ["hindu"],
+  "langs": ["hi", "gu", "en"],
+  "canvas": [1080, 1920],
+  "scene": "scenes/diwali-2026-0001.webp",
+  "slots": [
+    { "type": "photo", "who": "self", "box": [0, 640, 640, 1920], "shadow": true },
+    { "type": "text", "bind": "greeting", "box": [600, 180, 1040, 620], "font": "ornate",
+      "fill": { "preset": "gold-glitter" }, "maxLines": 3,
+      "shadow": { "color": "#80000000", "blur": 12 } },
+    { "type": "text", "bind": "self.name", "box": [600, 640, 1040, 780], "font": "script",
+      "fill": "#FFF3D6", "stroke": { "color": "#5A2A00", "width": 3 } },
+    { "type": "text", "bind": "self.subtitle", "box": [600, 790, 1040, 860], "align": "center" }
+  ]
+}

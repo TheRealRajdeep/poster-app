@@ -27,6 +27,11 @@ jobs:
       - name: Test app
         run: flutter test
 
+      - name: Spec schema matches fixtures (Python)
+        run: |
+          pip install jsonschema
+          python packages/poster_spec/tool/check_schema.py packages/poster_spec
+
       - name: Test poster_spec (pure Dart)
         working-directory: packages/poster_spec
         run: dart test

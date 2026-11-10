@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/TheRealRajdeep/poster-app/packages/poster_spec/schema/spec.schema.json",
+  "title": "Poster spec",
+  "description": "Where the photo and text go on a text-free scene. Mirrors packages/poster_spec/lib/src/parse.dart. Cross-field rules (boxes inside canvas, at least one photo slot and one name slot, minFontSize <= maxFontSize) are enforced by the Dart validator and by the factory's QA step.",
+  "type": "object",
+  "required": ["version", "id", "occasion", "archetype", "langs", "canvas", "scene", "slots"],
+  "properties": {
+    "version": { "const": 1 },
+    "id": { "$ref": "#/$defs/slug" },
+    "occasion": { "$ref": "#/$defs/slug" },
+    "archetype": { "$ref": "#/$defs/slug" },
+    "tones": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+    "langs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["en", "hi", "mr", "gu", "kn", "te", "ta"] }
+    },
+    "canvas": {
+      "type": "array",
+      "prefixItems": [{ "type": "integer", "minimum": 1 }, { "type": "integer", "minimum": 1 }],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "scene": { "type": "string", "minLength": 1 },
+    "slots": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "oneOf": [{ "$ref": "#/$defs/photoSlot" }, { "$ref": "#/$defs/textSlot" }] }
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "color": { "type": "string", "pattern": "^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$" },
+    "box": {
+      "description": "[left, top, right, bottom] in canvas pixels",
+      "type": "array",
+      "items": { "type": "number", "minimum": 0 },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "photoSlot": {
+      "type": "object",
+      "required": ["type", "box", "who"],
+      "properties": {
+        "type": { "const": "photo" },
+        "box": { "$ref": "#/$defs/box" },
+        "who": { "enum": ["self", "other"] },
+        "anchor": { "enum": ["bottom-center", "bottom-left", "bottom-right", "center"] },
+        "shadow": { "type": "boolean" }
+      }
+    },
+    "textSlot": {
+      "type": "object",
+      "required": ["type", "box", "bind"],
+      "properties": {
+        "type": { "const": "text" },
+        "box": { "$ref": "#/$defs/box" },
+        "bind": {
+          "enum": ["greeting", "message", "self.name", "self.subtitle", "other.name", "other.subtitle"]
+        },
+        "font": { "enum": ["body", "display", "script", "ornate"] },
+        "fill": {
+          "oneOf": [
+            { "$ref": "#/$defs/color" },
+            {
+              "type": "object",
+              "required": ["preset"],
+              "properties": { "preset": { "enum": ["gold-glitter", "silver-shine", "saffron-glow"] } }
+            },
+            {
+              "type": "object",
+              "required": ["gradient"],
+              "properties": {
+                "gradient": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/color" } },
+                "angle": { "type": "number" }
+              }
+            }
+          ]
+        },
+        "stroke": {
+          "type": "object",
+          "required": ["color", "width"],
+          "properties": {
+            "color": { "$ref": "#/$defs/color" },
+            "width": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        "shadow": {
+          "type": "object",
+          "required": ["color"],
+          "properties": {
+            "color": { "$ref": "#/$defs/color" },
+            "blur": { "type": "number", "minimum": 0 },
+            "dx": { "type": "number" },
+            "dy": { "type": "number" }
+          }
+        },
+        "align": { "enum": ["start", "center", "end"] },
+        "maxLines": { "type": "integer", "minimum": 1 },
+        "minFontSize": { "type": "number", "exclusiveMinimum": 0 },
+        "maxFontSize": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    }
+  }
+}
