@@ -136,7 +136,7 @@ void main() {
     );
     final r = await const PosterRenderer().render(
       spec: spec,
-      scene: await solid(540, 675, const ui.Color(0)),
+      scene: await solid(540, 675, const ui.Color(0x00000000)),
       inputs: RenderInputs(language: 'hi', texts: const {
         Binding.greeting: 'दीपावली की हार्दिक शुभकामनाएं',
         Binding.selfName: 'ढोकिया परिवार',
