@@ -1,0 +1,15 @@
+{
+  "spec": "../poster_spec/test/fixtures/valid/diwali_photo_left_text_right.json",
+  "language": "te",
+  "texts": {
+    "greeting": "దీపావళి శుభాకాంక్షలు",
+    "self.name": "వెంకటేశ్వర్లు",
+    "self.subtitle": "విజయవాడ, ఆంధ్రప్రదేశ్"
+  },
+  "photos": {
+    "self": [
+      600,
+      900
+    ]
+  }
+}

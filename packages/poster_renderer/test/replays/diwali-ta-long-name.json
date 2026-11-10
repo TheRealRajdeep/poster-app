@@ -1,0 +1,15 @@
+{
+  "spec": "../poster_spec/test/fixtures/valid/diwali_photo_left_text_right.json",
+  "language": "ta",
+  "texts": {
+    "greeting": "தீபாவளி நல்வாழ்த்துக்கள்",
+    "self.name": "திரு. சுப்பிரமணியன் ராமசாமி",
+    "self.subtitle": "மதுரை, தமிழ்நாடு"
+  },
+  "photos": {
+    "self": [
+      600,
+      900
+    ]
+  }
+}

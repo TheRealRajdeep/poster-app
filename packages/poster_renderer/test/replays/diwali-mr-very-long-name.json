@@ -1,0 +1,15 @@
+{
+  "spec": "../poster_spec/test/fixtures/valid/diwali_photo_left_text_right.json",
+  "language": "mr",
+  "texts": {
+    "greeting": "दिवाळीच्या हार्दिक शुभेच्छा",
+    "self.name": "सौ. सुवर्णा विनायक कुलकर्णी आणि संपूर्ण कुलकर्णी परिवार",
+    "self.subtitle": "पुणे, महाराष्ट्र"
+  },
+  "photos": {
+    "self": [
+      600,
+      900
+    ]
+  }
+}

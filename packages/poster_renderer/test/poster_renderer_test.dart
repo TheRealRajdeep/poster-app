@@ -188,6 +188,20 @@ void main() {
       expect(r.overflows, isEmpty);
     });
 
+    test('never breaks a word across lines when a smaller size would avoid it', () async {
+      // Test font: every glyph is 1em wide. "AAAAAAAAAA" is 10em; the box is 200px wide
+      // and allows 3 lines, so at 40px the word would wrap mid-word (400px > 200px).
+      // The renderer must shrink to 20px so the word fits on one line.
+      final spec = _spec([slot(const Box(0, 0, 200, 400), maxLines: 3, min: 10, max: 40)]);
+      final r = await renderer.render(
+        spec: spec,
+        scene: scene,
+        inputs: const RenderInputs(language: 'en', texts: {Binding.selfName: 'AAAAAAAAAA'}),
+      );
+      expect(r.textLayouts.single.fontSize, 20);
+      expect(r.textLayouts.single.lineCount, 1);
+    });
+
     test('blank or missing text skips the slot', () async {
       final spec = _spec([slot(const Box(0, 0, 400, 400))]);
       for (final texts in [<Binding, String>{}, {Binding.selfName: '   '}]) {

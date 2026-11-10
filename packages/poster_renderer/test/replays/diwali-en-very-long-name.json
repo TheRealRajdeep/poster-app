@@ -1,0 +1,15 @@
+{
+  "spec": "../poster_spec/test/fixtures/valid/diwali_photo_left_text_right.json",
+  "language": "en",
+  "texts": {
+    "greeting": "Happy Diwali",
+    "self.name": "Smt. Hansaben Pravinchandra Trivedi & the entire Trivedi Family",
+    "self.subtitle": "Rajkot, Gujarat"
+  },
+  "photos": {
+    "self": [
+      600,
+      900
+    ]
+  }
+}

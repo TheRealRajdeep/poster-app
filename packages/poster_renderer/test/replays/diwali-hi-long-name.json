@@ -1,0 +1,15 @@
+{
+  "spec": "../poster_spec/test/fixtures/valid/diwali_photo_left_text_right.json",
+  "language": "hi",
+  "texts": {
+    "greeting": "दीपावली की हार्दिक शुभकामनाएं",
+    "self.name": "श्री राजेन्द्र प्रसाद शर्मा जी",
+    "self.subtitle": "वाराणसी, उत्तर प्रदेश"
+  },
+  "photos": {
+    "self": [
+      600,
+      900
+    ]
+  }
+}

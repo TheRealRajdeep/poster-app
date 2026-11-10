@@ -1,0 +1,508 @@
+{
+  "birthday-kn-two-person": [
+    {
+      "slot": 1,
+      "bind": "other.name",
+      "fontSize": 65.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "other.subtitle",
+      "fontSize": 28.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 4,
+      "bind": "self.name",
+      "fontSize": 73.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-en-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 137.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 32.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 51.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-en-short-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 137.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 65.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 51.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-en-very-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 137.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 24.0,
+      "lines": 1,
+      "overflowed": true
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 51.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-gu-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 84.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 35.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-gu-short-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 84.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 86.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-gu-very-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 84.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 24.0,
+      "lines": 1,
+      "overflowed": true
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-hi-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 91.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 49.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-hi-short-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 91.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 87.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-hi-very-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 91.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 24.0,
+      "lines": 1,
+      "overflowed": true
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-kn-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 69.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 31.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 52.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-kn-short-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 69.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 59.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 52.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-kn-very-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 69.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 24.0,
+      "lines": 1,
+      "overflowed": true
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 52.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-mr-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 91.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 38.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-mr-short-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 91.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 63.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-mr-very-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 91.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 24.0,
+      "lines": 1,
+      "overflowed": true
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 54.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-ta-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 49.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 27.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 44.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-ta-short-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 49.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 52.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 44.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-ta-very-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 49.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 24.0,
+      "lines": 1,
+      "overflowed": true
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 44.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-te-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 74.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 31.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 47.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-te-short-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 74.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 61.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 47.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "diwali-te-very-long-name": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 74.0,
+      "lines": 2,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 24.0,
+      "lines": 1,
+      "overflowed": true
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 47.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ]
+}

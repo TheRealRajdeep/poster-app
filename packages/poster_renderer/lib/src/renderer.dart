@@ -35,8 +35,36 @@ class TextOverflow {
   String toString() => 'TextOverflow(slot $slotIndex, ${binding.key})';
 }
 
+/// How a text slot was laid out. Platform-independent (same font files give
+/// the same numbers), so tests snapshot these instead of pixels.
+class TextLayout {
+  const TextLayout({
+    required this.slotIndex,
+    required this.binding,
+    required this.fontSize,
+    required this.lineCount,
+    required this.overflowed,
+  });
+  final int slotIndex;
+  final Binding binding;
+  final double fontSize;
+  final int lineCount;
+  final bool overflowed;
+
+  Map<String, Object> toJson() => {
+        'slot': slotIndex,
+        'bind': binding.key,
+        'fontSize': fontSize,
+        'lines': lineCount,
+        'overflowed': overflowed,
+      };
+}
+
 class RenderResult {
-  const RenderResult(this.image, this.overflows);
+  const RenderResult(this.image, this.overflows, [this.textLayouts = const []]);
+
+  /// One entry per text slot that had text, in paint order.
+  final List<TextLayout> textLayouts;
 
   /// Caller owns this image and must `dispose()` it.
   final ui.Image image;
@@ -84,6 +112,7 @@ class PosterRenderer {
     canvas.drawImageRect(scene, _cover(scene, full), full, paint);
 
     final overflows = <TextOverflow>[];
+    final layouts = <TextLayout>[];
     for (final (i, slot) in spec.slots.indexed) {
       switch (slot) {
         case PhotoSlot():
@@ -95,14 +124,21 @@ class PosterRenderer {
           final font = fonts(slot.font, inputs.language);
           final fit = _fitFontSize(slot, text, font, inputs.language);
           if (fit.overflowed) overflows.add(TextOverflow(i, slot.bind));
-          await _drawText(canvas, slot, text, font, inputs.language, fit.size, ellipsis: fit.overflowed);
+          final lines = await _drawText(canvas, slot, text, font, inputs.language, fit.size, ellipsis: fit.overflowed);
+          layouts.add(TextLayout(
+            slotIndex: i,
+            binding: slot.bind,
+            fontSize: fit.size,
+            lineCount: lines,
+            overflowed: fit.overflowed,
+          ));
       }
     }
 
     final picture = recorder.endRecording();
     try {
       final image = await picture.toImage(width, height);
-      return RenderResult(image, List.unmodifiable(overflows));
+      return RenderResult(image, List.unmodifiable(overflows), List.unmodifiable(layouts));
     } finally {
       picture.dispose();
     }
@@ -145,11 +181,17 @@ class PosterRenderer {
   ) {
     var lo = slot.minFontSize.floor();
     var hi = slot.maxFontSize.floor();
+    // A size only fits if no word has to be broken mid-word: Indic words
+    // split across lines read as gibberish.
+    final words = text.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toSet().toList();
     int? best;
     while (lo <= hi) {
       final mid = (lo + hi) ~/ 2;
       final p = _paragraph(slot, text, font, language, mid.toDouble(), ellipsis: false);
-      final fits = !p.didExceedMaxLines && p.height <= slot.box.height && p.longestLine <= slot.box.width;
+      final fits = !p.didExceedMaxLines &&
+          p.height <= slot.box.height &&
+          p.longestLine <= slot.box.width &&
+          _widestWord(slot, words, font, language, mid.toDouble()) <= slot.box.width;
       p.dispose();
       if (fits) {
         best = mid;
@@ -163,9 +205,20 @@ class PosterRenderer {
         : (size: best.toDouble(), overflowed: false);
   }
 
+  double _widestWord(TextSlot slot, List<String> words, FontChoice? font, String language, double size) {
+    var widest = 0.0;
+    for (final word in words) {
+      final p = _paragraph(slot, word, font, language, size, ellipsis: false, maxWidth: double.infinity);
+      if (p.maxIntrinsicWidth > widest) widest = p.maxIntrinsicWidth;
+      p.dispose();
+    }
+    return widest;
+  }
+
   /// Draws text in up to two passes: outline (with the shadow underneath),
   /// then the fill on top. Both passes share one layout, so they line up.
-  Future<void> _drawText(
+  /// Returns the number of lines drawn.
+  Future<int> _drawText(
     ui.Canvas canvas,
     TextSlot slot,
     String text,
@@ -185,10 +238,12 @@ class PosterRenderer {
     ];
     // Vertically centre the text block inside its box.
     final dy = slot.box.top + (slot.box.height - passes.last.height) / 2;
+    final lines = passes.last.computeLineMetrics().length;
     for (final p in passes) {
       canvas.drawParagraph(p, ui.Offset(slot.box.left, dy));
       p.dispose();
     }
+    return lines;
   }
 
   ui.Paragraph _paragraph(
@@ -200,6 +255,7 @@ class PosterRenderer {
     required bool ellipsis,
     ui.Paint? foreground,
     List<ui.Shadow>? shadows,
+    double? maxWidth,
   }) {
     final builder = ui.ParagraphBuilder(
       ui.ParagraphStyle(
@@ -225,6 +281,6 @@ class PosterRenderer {
         ),
       )
       ..addText(text);
-    return builder.build()..layout(ui.ParagraphConstraints(width: slot.box.width));
+    return builder.build()..layout(ui.ParagraphConstraints(width: maxWidth ?? slot.box.width));
   }
 }

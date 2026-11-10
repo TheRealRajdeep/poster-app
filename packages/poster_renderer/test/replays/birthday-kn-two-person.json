@@ -1,0 +1,19 @@
+{
+  "spec": "../poster_spec/test/fixtures/valid/birthday_two_person.json",
+  "language": "kn",
+  "texts": {
+    "other.name": "ವಿನಯ ಕುಲಕರ್ಣಿ",
+    "other.subtitle": "ಮಾಜಿ ಸಚಿವರು ಮತ್ತು ಶಾಸಕರು ಧಾರವಾಡ",
+    "self.name": "ಮಹೇಶ ಬಣಕಾರ"
+  },
+  "photos": {
+    "self": [
+      500,
+      700
+    ],
+    "other": [
+      700,
+      1000
+    ]
+  }
+}

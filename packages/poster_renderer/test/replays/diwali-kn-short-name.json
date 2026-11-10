@@ -1,0 +1,15 @@
+{
+  "spec": "../poster_spec/test/fixtures/valid/diwali_photo_left_text_right.json",
+  "language": "kn",
+  "texts": {
+    "greeting": "ದೀಪಾವಳಿ ಹಬ್ಬದ ಶುಭಾಶಯಗಳು",
+    "self.name": "ವಿನಯ ಕುಲಕರ್ಣಿ",
+    "self.subtitle": "ಧಾರವಾಡ, ಕರ್ನಾಟಕ"
+  },
+  "photos": {
+    "self": [
+      600,
+      900
+    ]
+  }
+}

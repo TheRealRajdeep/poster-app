@@ -1,0 +1,15 @@
+{
+  "spec": "../poster_spec/test/fixtures/valid/diwali_photo_left_text_right.json",
+  "language": "gu",
+  "texts": {
+    "greeting": "દિવાળીની હાર્દિક શુભકામનાઓ",
+    "self.name": "શ્રીમતી હંસાબેન પ્રવિણચંદ્ર ત્રિવેદી અને સમગ્ર ત્રિવેદી પરિવાર",
+    "self.subtitle": "રાજકોટ, ગુજરાત"
+  },
+  "photos": {
+    "self": [
+      600,
+      900
+    ]
+  }
+}
