@@ -12,7 +12,8 @@ Tick an item **as soon as it's done** and close its issue. Items labelled `ui` n
 
 - [x] [#4](https://github.com/TheRealRajdeep/poster-app/issues/4) poster_spec: Dart models + JSON Schema + validation
 - [x] [#5](https://github.com/TheRealRajdeep/poster-app/issues/5) poster_renderer: compose scene + photo slot + text slots into a PNG
-- [ ] [#6](https://github.com/TheRealRajdeep/poster-app/issues/6) Indian-script fonts: bundle body + display fonts for hi, mr, gu, kn, te, ta, en
+- [x] [#6](https://github.com/TheRealRajdeep/poster-app/issues/6) Indian-script fonts: bundle body + display fonts for hi, mr, gu, kn, te, ta, en
+- [ ] [#49](https://github.com/TheRealRajdeep/poster-app/issues/49) Choose decorative 'script' and 'ornate' poster fonts per language `ui`
 - [ ] [#7](https://github.com/TheRealRajdeep/poster-app/issues/7) Text effects: stroke, gradient/glitter fill, shadow/glow, auto-fit to box
 - [ ] [#8](https://github.com/TheRealRajdeep/poster-app/issues/8) Snapshot tests: long names in every script, overflow cases
 - [ ] [#9](https://github.com/TheRealRajdeep/poster-app/issues/9) Hand-made sample scene + spec (1 archetype)
