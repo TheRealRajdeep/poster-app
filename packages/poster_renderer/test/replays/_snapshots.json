@@ -504,5 +504,51 @@
       "lines": 1,
       "overflowed": false
     }
+  ],
+  "sample-diwali-0001-hi": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 106.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 96.0,
+      "lines": 1,
+      "overflowed": false
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 44.0,
+      "lines": 1,
+      "overflowed": false
+    }
+  ],
+  "sample-diwali-0001-kn-very-long": [
+    {
+      "slot": 1,
+      "bind": "greeting",
+      "fontSize": 91.0,
+      "lines": 3,
+      "overflowed": false
+    },
+    {
+      "slot": 2,
+      "bind": "self.name",
+      "fontSize": 40.0,
+      "lines": 2,
+      "overflowed": true
+    },
+    {
+      "slot": 3,
+      "bind": "self.subtitle",
+      "fontSize": 44.0,
+      "lines": 1,
+      "overflowed": false
+    }
   ]
 }

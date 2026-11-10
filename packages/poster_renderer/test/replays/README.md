@@ -17,7 +17,8 @@ on Windows, Linux CI and Android.
      "photos": { "self": [600, 900] }
    }
    ```
-   `photos` gives placeholder cut-out sizes (width, height).
+   `photos` gives placeholder cut-out sizes (width, height). Optional `"scene"`
+   points at a real scene image; otherwise a flat colour is used.
 3. Run `UPDATE_SNAPSHOTS=1 flutter test test/replay_test.dart`, check the diff
    in `_snapshots.json` is what you expect, then fix the bug: the snapshot
    change becomes the regression test.

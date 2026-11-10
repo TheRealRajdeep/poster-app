@@ -1,0 +1,11 @@
+{
+  "spec": "../../assets/samples/diwali-sample-0001/spec.json",
+  "scene": "../../assets/samples/diwali-sample-0001/scene.webp",
+  "language": "hi",
+  "texts": {
+    "greeting": "दीपावली की हार्दिक शुभकामनाएं",
+    "self.name": "ढोकिया परिवार",
+    "self.subtitle": "राजकोट, गुजरात"
+  },
+  "photos": { "self": [600, 900] }
+}

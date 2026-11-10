@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "id": "diwali-sample-0001",
+  "occasion": "diwali",
+  "archetype": "photo-left-text-right",
+  "tones": ["hindu"],
+  "langs": ["en", "hi", "mr", "gu", "kn", "te", "ta"],
+  "canvas": [1080, 1920],
+  "scene": "assets/samples/diwali-sample-0001/scene.webp",
+  "slots": [
+    { "type": "photo", "who": "self", "box": [0, 600, 600, 1920], "anchor": "bottom-center", "shadow": true },
+    { "type": "text", "bind": "greeting", "box": [470, 190, 1050, 700], "font": "ornate",
+      "fill": { "preset": "gold-glitter" }, "maxLines": 3, "minFontSize": 48, "maxFontSize": 150,
+      "shadow": { "color": "#99000000", "blur": 14, "dy": 4 } },
+    { "type": "text", "bind": "self.name", "box": [470, 730, 1050, 920], "font": "display",
+      "fill": "#FFF3D6", "stroke": { "color": "#4A1A05", "width": 4 }, "maxLines": 2,
+      "minFontSize": 40, "maxFontSize": 96 },
+    { "type": "text", "bind": "self.subtitle", "box": [620, 930, 1050, 1000],
+      "fill": "#F3DDBF", "minFontSize": 28, "maxFontSize": 44,
+      "shadow": { "color": "#CC000000", "blur": 8, "dy": 2 } }
+  ]
+}

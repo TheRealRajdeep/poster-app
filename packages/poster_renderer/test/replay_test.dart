@@ -73,9 +73,15 @@ void main() {
         photos[Person.values.byName(key)] = placeholders['$w:$h'] ??= await solid(w, h, 0xFF2D6CB5);
       }
 
+      // Optional real scene image; otherwise a flat placeholder.
+      var caseScene = scene;
+      if (c['scene'] case final String path) {
+        final codec = await ui.instantiateImageCodec(File(path).readAsBytesSync());
+        caseScene = (await codec.getNextFrame()).image;
+      }
       final result = await const PosterRenderer().render(
         spec: parsed.spec!,
-        scene: scene,
+        scene: caseScene,
         inputs: RenderInputs(language: c['language']! as String, texts: texts, photos: photos),
       );
       final layout = [for (final t in result.textLayouts) t.toJson()];

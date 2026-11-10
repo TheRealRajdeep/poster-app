@@ -1,0 +1,11 @@
+{
+  "spec": "../../assets/samples/diwali-sample-0001/spec.json",
+  "scene": "../../assets/samples/diwali-sample-0001/scene.webp",
+  "language": "kn",
+  "texts": {
+    "greeting": "ದೀಪಾವಳಿ ಹಬ್ಬದ ಶುಭಾಶಯಗಳು",
+    "self.name": "ಮಾಜಿ ಸಚಿವರು ಮತ್ತು ಶಾಸಕರು ಶ್ರೀ ವಿನಯ ಕುಲಕರ್ಣಿ ಹಾಗೂ ಕುಟುಂಬ",
+    "self.subtitle": "ಧಾರವಾಡ, ಕರ್ನಾಟಕ"
+  },
+  "photos": { "self": [600, 900] }
+}
