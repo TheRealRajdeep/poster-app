@@ -2,28 +2,29 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'wa_share_method_channel.dart';
 
+/// Low-level platform contract. App code uses `WaShare` instead.
 abstract class WaSharePlatform extends PlatformInterface {
-  /// Constructs a WaSharePlatform.
   WaSharePlatform() : super(token: _token);
 
   static final Object _token = Object();
 
   static WaSharePlatform _instance = MethodChannelWaShare();
 
-  /// The default instance of [WaSharePlatform] to use.
-  ///
-  /// Defaults to [MethodChannelWaShare].
   static WaSharePlatform get instance => _instance;
 
-  /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [WaSharePlatform] when
-  /// they register themselves.
   static set instance(WaSharePlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
+  /// Package names of installed WhatsApp apps.
+  Future<List<String>> installedPackages();
+
+  /// Returns `launched` or `not_installed`.
+  Future<String> shareImage({
+    required String path,
+    required String mimeType,
+    String? caption,
+    String? package,
+  });
 }

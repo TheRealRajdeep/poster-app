@@ -1,59 +1,64 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
+// Developer smoke test for the plugin only (not product UI): shares a
+// generated test image so the WhatsApp share can be checked on a device.
+import 'dart:io';
+import 'dart:ui' as ui;
 
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 import 'package:wa_share/wa_share.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MaterialApp(home: _Smoke()));
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class _Smoke extends StatefulWidget {
+  const _Smoke();
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<_Smoke> createState() => _SmokeState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _waSharePlugin = WaShare();
+class _SmokeState extends State<_Smoke> {
+  String _log = '';
 
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
+  Future<String> _testImage() async {
+    final rec = ui.PictureRecorder();
+    ui.Canvas(rec).drawRect(const Rect.fromLTWH(0, 0, 540, 960), Paint()..color = Colors.orange);
+    final img = await rec.endRecording().toImage(540, 960);
+    final png = await img.toByteData(format: ui.ImageByteFormat.png);
+    final file = File('${Directory.systemTemp.path}/wa_share_test.png');
+    await file.writeAsBytes(png!.buffer.asUint8List());
+    return file.path;
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
+  Future<void> _run(Future<Object?> Function() action) async {
     try {
-      platformVersion =
-          await _waSharePlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      final r = await action();
+      setState(() => _log = '$r');
+    } catch (e) {
+      setState(() => _log = 'error: $e');
     }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Plugin example app')),
-        body: Center(child: Text('Running on: $_platformVersion\n')),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              TextButton(
+                onPressed: () => _run(() => const WaShare().installedApps()),
+                child: const Text('installed'),
+              ),
+              for (final app in WhatsAppApp.values)
+                TextButton(
+                  onPressed: () => _run(() async => const WaShare()
+                      .shareImage(await _testImage(), target: app, caption: 'wa_share test')),
+                  child: Text('share -> ${app.name}'),
+                ),
+              TextButton(
+                onPressed: () => _run(() async => const WaShare().shareImage(await _testImage())),
+                child: const Text('share -> chooser'),
+              ),
+              Text(_log),
+            ],
+          ),
+        ),
+      );
 }
